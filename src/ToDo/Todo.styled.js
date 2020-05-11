@@ -43,6 +43,7 @@ const TaskItem = styled.div`
   user-select: none;
   display: flex;
   align-items: center;
+  background: ${({ isDone }) => (isDone ? "red" : "blue")};
   &.done {
     text-decoration: line-through;
     color: #d8d8d8;
@@ -65,6 +66,14 @@ const DoneBtn = styled.button`
   margin: 0 8px 0 0;
 `;
 
+const Filters = styled.div`
+  display: flex;
+  justify-content: center;
+  button {
+    margin: 6px;
+  }
+`;
+
 export {
   Main,
   Wrapper,
@@ -74,5 +83,6 @@ export {
   TaskItem,
   Form,
   RemoveBtn,
-  DoneBtn
+  DoneBtn,
+  Filters
 };

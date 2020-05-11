@@ -11,57 +11,57 @@ const ToDo = props => {
     }
   };
 
-  const onUpdateTask = e => {
+  const onUpdateValue = e => {
     const value = e.target.value;
-    props.updateTask(value);
+    props.updateValue(value);
   };
 
   const onRemoveTask = idx => {
     props.removeTask(idx);
   };
 
-  const toggleState = e => {
-    const classList = e.target.classList;
-    if (classList.contains("done")) {
-      classList.remove("done");
-    } else {
-      classList.add("done");
-    }
+  const onUpdateTaskState = idx => {
+    props.updateTaskState(idx);
   };
 
   return (
-    <div>
-      <S.Main>
-        <S.Wrapper>
-          <S.Form>
-            <S.Input
-              type="text"
-              ref={inputRef}
-              onChange={e => onUpdateTask(e)}
-              onKeyDown={e => onAddTask(e)}
-              value={props.tasksData.currentValue}
-            />
-          </S.Form>
-          <S.TasksWrapper>
-            {props.tasksData.tasksData.map((item, idx) => {
-              return (
-                <React.Fragment key={idx}>
-                  <S.ItemWrapper>
-                    <S.TaskItem onClick={e => toggleState(e)}>
-                      <S.DoneBtn className="done-btn" />
-                      {item.task}
-                    </S.TaskItem>
-                    <S.RemoveBtn onClick={() => onRemoveTask(idx)}>
-                      X
-                    </S.RemoveBtn>{" "}
-                  </S.ItemWrapper>
-                </React.Fragment>
-              );
-            })}
-          </S.TasksWrapper>
-        </S.Wrapper>
-      </S.Main>
-    </div>
+    <S.Main className="Main">
+      <S.Wrapper className="Wrapper">
+        <S.Form className="Form">
+          <S.Input
+            type="text"
+            ref={inputRef}
+            onChange={e => onUpdateValue(e)}
+            onKeyDown={e => onAddTask(e)}
+            value={props.tasksData.currentValue}
+          />
+        </S.Form>
+        <S.Filters>
+          <button>all</button>
+          <button>active</button>
+          <button>completed</button>
+        </S.Filters>
+        <S.TasksWrapper className="TasksWrapper">
+          {props.tasksData.tasksData.map((item, idx) => {
+            return (
+              <React.Fragment key={idx}>
+                <S.ItemWrapper className="ItemWrapper">
+                  <S.TaskItem
+                    onClick={e => onUpdateTaskState(idx)}
+                    isDone={props.tasksData.tasksData[idx].isDone}
+                    className="TaskItem"
+                  >
+                    <S.DoneBtn className="done-btn" />
+                    {item.task}
+                  </S.TaskItem>
+                  <S.RemoveBtn onClick={() => onRemoveTask(idx)}>X</S.RemoveBtn>{" "}
+                </S.ItemWrapper>
+              </React.Fragment>
+            );
+          })}
+        </S.TasksWrapper>
+      </S.Wrapper>
+    </S.Main>
   );
 };
 

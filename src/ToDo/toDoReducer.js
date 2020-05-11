@@ -7,7 +7,7 @@ const toDoReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TASK": {
       const newState = { ...state };
-      const newValue = { task: action.newTask };
+      const newValue = { task: action.newTask, isDone: false };
       newState.tasksData.push(newValue);
       newState.currentValue = "";
       return newState;
@@ -17,7 +17,13 @@ const toDoReducer = (state = initialState, action) => {
       newState.tasksData.splice(action.idx, 1);
       return newState;
     }
-    case "UPDATE_TASK_MESSAGE": {
+    case "SWITCH_TASK_STATE": {
+      const newState = { ...state };
+      const idx = action.idx;
+      newState.tasksData[idx].isDone = !newState.tasksData[idx].isDone;
+      return newState;
+    }
+    case "UPDATE_INPUT_VALUE": {
       const newState = { ...state };
       newState.currentValue = action.newTaskMessage;
       return newState;
@@ -32,13 +38,18 @@ export const addTaskAC = text => ({
   newTask: text
 });
 
-export const updateTaskAC = text => ({
-  type: "UPDATE_TASK_MESSAGE",
+export const updateValueAC = text => ({
+  type: "UPDATE_INPUT_VALUE",
   newTaskMessage: text
 });
 
 export const removeTaskAC = idx => ({
   type: "REMOVE_TASK",
+  idx
+});
+
+export const taskDoneAC = idx => ({
+  type: "SWITCH_TASK_STATE",
   idx
 });
 

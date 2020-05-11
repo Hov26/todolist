@@ -1,4 +1,9 @@
-import { addTaskAC, updateTaskAC, removeTaskAC } from "./toDoReducer";
+import {
+  addTaskAC,
+  updateValueAC,
+  removeTaskAC,
+  taskDoneAC
+} from "./toDoReducer";
 import ToDo from "./ToDo";
 import { connect } from "react-redux";
 
@@ -13,11 +18,14 @@ let mapDispatchToProps = dispatch => {
     addTask: text => {
       dispatch(addTaskAC(text));
     },
-    updateTask: text => {
-      dispatch(updateTaskAC(text));
+    updateValue: text => {
+      dispatch(updateValueAC(text));
     },
     removeTask: idx => {
       dispatch(removeTaskAC(idx));
+    },
+    updateTaskState: idx => {
+      dispatch(taskDoneAC(idx));
     }
   };
 };
