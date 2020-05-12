@@ -31,7 +31,6 @@ const toDoReducer = (state = initialState, action) => {
       return newState;
     }
     case "SHOW_COMPLETED_TASKS": {
-      console.log("SHOW_COMPLETED_TASKS");
       const newState = { ...state };
       newState.isCompletedClicked = true;
       newState.isActiveClicked = false;

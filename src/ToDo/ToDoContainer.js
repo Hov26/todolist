@@ -12,26 +12,11 @@ let mapStateToProps = state => {
 
 let mapDispatchToProps = dispatch => {
   return {
-    addTask: text => {
-      dispatch(actions.addTaskAC(text));
-    },
     updateValue: text => {
       dispatch(actions.updateValueAC(text));
     },
-    removeTask: idx => {
-      dispatch(actions.removeTaskAC(idx));
-    },
-    updateTaskState: idx => {
-      dispatch(actions.taskDoneAC(idx));
-    },
-    showCompletedTasks: () => {
-      dispatch(actions.showCompletedTasksAC());
-    },
-    showActiveTasks: () => {
-      dispatch(actions.showActiveTasksAC());
-    },
-    showAllTasks: () => {
-      dispatch(actions.showAllTasksAC());
+    addTask: text => {
+      dispatch(actions.addTaskAC(text));
     }
   };
 };

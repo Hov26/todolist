@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./Todo.styled.js";
 import Filters from "./../components/Filters/Filters";
+import TasksList from "./../components/TasksList/TasksList";
 
 const ToDo = props => {
   const onAddTask = e => {
@@ -15,14 +16,6 @@ const ToDo = props => {
     props.updateValue(value);
   };
 
-  const onRemoveTask = idx => {
-    props.removeTask(idx);
-  };
-
-  const onUpdateTaskState = idx => {
-    props.updateTaskState(idx);
-  };
-
   return (
     <S.Wrapper className="Wrapper">
       <S.Form className="Form">
@@ -33,32 +26,8 @@ const ToDo = props => {
           value={props.tasksData.currentValue}
         />
       </S.Form>
-      {/* <Filters /> */}
-      <S.Filters>
-        <button onClick={props.showAllTasks}>all</button>
-        <button onClick={props.showActiveTasks}>active</button>
-        <button onClick={props.showCompletedTasks}>completed</button>
-      </S.Filters>
-      <S.TasksWrapper className="TasksWrapper">
-        {props.list.map((item, idx) => {
-          const isTaskDone = props.list[idx].isDone;
-          return (
-            <React.Fragment key={idx}>
-              <S.ItemWrapper className="ItemWrapper">
-                <S.TaskItem
-                  isDone={isTaskDone}
-                  className="TaskItem"
-                  onClick={() => onUpdateTaskState(idx)}
-                >
-                  <S.DoneBtn isDone={isTaskDone} />
-                  {item.task}
-                </S.TaskItem>
-                <S.RemoveBtn onClick={() => onRemoveTask(idx)}>X</S.RemoveBtn>{" "}
-              </S.ItemWrapper>
-            </React.Fragment>
-          );
-        })}
-      </S.TasksWrapper>
+      <Filters />
+      <TasksList />
     </S.Wrapper>
   );
 };

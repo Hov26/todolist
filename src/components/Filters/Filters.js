@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import * as S from "./styled";
 import { connect } from "react-redux";
 import {
   showAllTasksAC,
@@ -7,29 +7,27 @@ import {
   showCompletedTasksAC
 } from "../../ToDo/actions";
 
-const FilterComp = styled.div`
-  display: flex;
-  justify-content: center;
-  button {
-    margin: 6px;
-  }
-`;
-
 const Filters = props => {
   return (
-    <FilterComp>
-      <button onClick={props.showAllTasksAC}>all</button>
-      <button onClick={props.showActiveTasksAC}>active</button>
-      <button onClick={props.showCompletedTasksAC}>completed</button>
-    </FilterComp>
+    <S.FilterComp>
+      <button onClick={props.showAllTasks}>all</button>
+      <button onClick={props.showActiveTasks}>active</button>
+      <button onClick={props.showCompletedTasks}>completed</button>
+    </S.FilterComp>
   );
 };
 
-const mapDispatchToProps = () => {
+let mapDispatchToProps = dispatch => {
   return {
-    showAllTasksAC,
-    showActiveTasksAC,
-    showCompletedTasksAC
+    showCompletedTasks: () => {
+      dispatch(showCompletedTasksAC());
+    },
+    showActiveTasks: () => {
+      dispatch(showActiveTasksAC());
+    },
+    showAllTasks: () => {
+      dispatch(showAllTasksAC());
+    }
   };
 };
 
