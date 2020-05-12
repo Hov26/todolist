@@ -2,7 +2,7 @@ import { createStore, combineReducers } from "redux";
 import toDoReducer from "../ToDo/toDoReducer";
 
 let reducers = combineReducers({
-  tasksData: toDoReducer
+  todoState: toDoReducer
 });
 
 let store = createStore(reducers);

@@ -1,6 +1,8 @@
 let initialState = {
   tasksData: [],
-  currentValue: ""
+  currentValue: "",
+  isCompletedClicked: false,
+  isActiveClicked: false
 };
 
 const toDoReducer = (state = initialState, action) => {
@@ -28,29 +30,29 @@ const toDoReducer = (state = initialState, action) => {
       newState.currentValue = action.newTaskMessage;
       return newState;
     }
+    case "SHOW_COMPLETED_TASKS": {
+      console.log("SHOW_COMPLETED_TASKS");
+      const newState = { ...state };
+      newState.isCompletedClicked = true;
+      newState.isActiveClicked = false;
+      return newState;
+    }
+    case "SHOW_ACTIVE_TASKS": {
+      const newState = { ...state };
+      newState.isActiveClicked = true;
+      newState.isCompletedClicked = false;
+      return newState;
+    }
+    case "SHOW_ALL_TASKS": {
+      console.log("SHOW_ALL_TASKS");
+      const newState = { ...state };
+      newState.isActiveClicked = false;
+      newState.isCompletedClicked = false;
+      return newState;
+    }
     default:
       return state;
   }
 };
-
-export const addTaskAC = text => ({
-  type: "ADD_TASK",
-  newTask: text
-});
-
-export const updateValueAC = text => ({
-  type: "UPDATE_INPUT_VALUE",
-  newTaskMessage: text
-});
-
-export const removeTaskAC = idx => ({
-  type: "REMOVE_TASK",
-  idx
-});
-
-export const taskDoneAC = idx => ({
-  type: "SWITCH_TASK_STATE",
-  idx
-});
 
 export default toDoReducer;

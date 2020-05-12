@@ -1,31 +1,37 @@
-import {
-  addTaskAC,
-  updateValueAC,
-  removeTaskAC,
-  taskDoneAC
-} from "./toDoReducer";
+import * as actions from "./actions";
+import { getTasksList } from "./selector";
 import ToDo from "./ToDo";
 import { connect } from "react-redux";
 
 let mapStateToProps = state => {
   return {
-    tasksData: state.tasksData
+    tasksData: state.todoState,
+    list: getTasksList(state)
   };
 };
 
 let mapDispatchToProps = dispatch => {
   return {
     addTask: text => {
-      dispatch(addTaskAC(text));
+      dispatch(actions.addTaskAC(text));
     },
     updateValue: text => {
-      dispatch(updateValueAC(text));
+      dispatch(actions.updateValueAC(text));
     },
     removeTask: idx => {
-      dispatch(removeTaskAC(idx));
+      dispatch(actions.removeTaskAC(idx));
     },
     updateTaskState: idx => {
-      dispatch(taskDoneAC(idx));
+      dispatch(actions.taskDoneAC(idx));
+    },
+    showCompletedTasks: () => {
+      dispatch(actions.showCompletedTasksAC());
+    },
+    showActiveTasks: () => {
+      dispatch(actions.showActiveTasksAC());
+    },
+    showAllTasks: () => {
+      dispatch(actions.showAllTasksAC());
     }
   };
 };
