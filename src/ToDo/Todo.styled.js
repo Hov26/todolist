@@ -11,13 +11,15 @@ const Form = styled.div`
 `;
 
 const Input = styled.input`
-  padding: 16px;
+  padding: 18px;
+  font-size: 22px;
+  font-weight: 100;
   width: 100%;
   border: 2px solid #d8d8d8;
   transition: all 0.2s linear;
   &:focus {
     outline: none !important;
-    border-color: #68c100;
+    border-color: #9a9a9a;
   }
 `;
 

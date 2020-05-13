@@ -18,6 +18,7 @@ const ToDo = props => {
 
   return (
     <S.Wrapper className="Wrapper">
+      <h1>Todos</h1>
       <S.Form className="Form">
         <S.Input
           type="text"

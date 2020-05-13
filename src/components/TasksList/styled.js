@@ -32,9 +32,17 @@ const ItemWrapper = styled.div`
   justify-content: space-between;
   padding: 10px 6px;
   border-bottom: 1px solid #d8d8d8;
+  &:first-child {
+    border-top: 1px solid #d8d8d8;
+  }
+  &:hover .RemoveBtn {
+    opacity: 1;
+  }
 `;
 
 const TaskItem = styled.div`
+  font-size: 20px;
+  font-weight: 100;
   width: 100%;
   user-select: none;
   display: flex;
@@ -43,7 +51,16 @@ const TaskItem = styled.div`
   color: ${({ isDone }) => (isDone ? "#d8d8d8" : "black")};
 `;
 
-const RemoveBtn = styled.button``;
+const RemoveBtn = styled.button`
+  border: none;
+  outline: none;
+  opacity: 0;
+  transition: all 0.1s linear;
+  font-size: 30px;
+  font-weight: 100;
+  color: #ff8888;
+  cursor: pointer;
+`;
 
 const DoneBtn = styled.button`
   width: 26px;
@@ -58,6 +75,9 @@ const DoneBtn = styled.button`
   background-size: cover;
   border-radius: 50%;
   margin: 0 8px 0 0;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export {

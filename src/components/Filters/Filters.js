@@ -4,9 +4,9 @@ import * as S from "./styled";
 const Filters = props => {
   return (
     <S.Wrapper>
-      <button onClick={props.showAllTasks}>all</button>
-      <button onClick={props.showActiveTasks}>active</button>
-      <button onClick={props.showCompletedTasks}>completed</button>
+      <S.Button onClick={props.showAllTasks}>all</S.Button>
+      <S.Button onClick={props.showActiveTasks}>active</S.Button>
+      <S.Button onClick={props.showCompletedTasks}>completed</S.Button>
     </S.Wrapper>
   );
 };

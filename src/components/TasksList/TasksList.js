@@ -24,7 +24,12 @@ const TasksList = props => {
               <S.DoneBtn isDone={isTaskDone} />
               {item.task}
             </S.TaskItem>
-            <S.RemoveBtn onClick={() => onRemoveTask(idx)}>X</S.RemoveBtn>{" "}
+            <S.RemoveBtn
+              className="RemoveBtn"
+              onClick={() => onRemoveTask(idx)}
+            >
+              &times;
+            </S.RemoveBtn>{" "}
           </S.ItemWrapper>
         );
       })}
