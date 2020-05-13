@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const FilterComp = styled.div`
+const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   button {
@@ -8,4 +8,4 @@ const FilterComp = styled.div`
   }
 `;
 
-export { FilterComp };
+export { Wrapper };

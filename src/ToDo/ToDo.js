@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./Todo.styled.js";
-import Filters from "./../components/Filters/Filters";
+import FiltersContainer from "./../components/Filters/FiltersContainer";
 import TasksList from "./../components/TasksList/TasksList";
 
 const ToDo = props => {
@@ -26,7 +26,7 @@ const ToDo = props => {
           value={props.tasksData.currentValue}
         />
       </S.Form>
-      <Filters />
+      <FiltersContainer />
       <TasksList />
     </S.Wrapper>
   );
