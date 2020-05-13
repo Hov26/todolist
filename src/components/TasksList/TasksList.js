@@ -1,8 +1,5 @@
 import React from "react";
 import * as S from "./styled";
-import { connect } from "react-redux";
-import { removeTaskAC, taskDoneAC } from "../../ToDo/actions";
-import { getTasksList } from "../../ToDo/selector";
 
 const TasksList = props => {
   const onRemoveTask = idx => {
@@ -35,22 +32,4 @@ const TasksList = props => {
   );
 };
 
-let mapStateToProps = state => {
-  return {
-    tasksData: state.todoState,
-    list: getTasksList(state)
-  };
-};
-
-let mapDispatchToProps = dispatch => {
-  return {
-    removeTask: idx => {
-      dispatch(removeTaskAC(idx));
-    },
-    updateTaskState: idx => {
-      dispatch(taskDoneAC(idx));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TasksList);
+export default TasksList;

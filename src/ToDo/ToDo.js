@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./Todo.styled.js";
 import FiltersContainer from "./../components/Filters/FiltersContainer";
-import TasksList from "./../components/TasksList/TasksList";
+import TasksListContainer from "./../components/TasksList/TasksListContainer";
 
 const ToDo = props => {
   const onAddTask = e => {
@@ -27,7 +27,7 @@ const ToDo = props => {
         />
       </S.Form>
       <FiltersContainer />
-      <TasksList />
+      <TasksListContainer />
     </S.Wrapper>
   );
 };
