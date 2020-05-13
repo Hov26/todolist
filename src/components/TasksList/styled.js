@@ -17,7 +17,7 @@ const Input = styled.input`
   transition: all 0.2s linear;
   &:focus {
     outline: none !important;
-    border-color: #68c100;
+    border-color: #8897ff;
   }
 `;
 
@@ -60,14 +60,6 @@ const DoneBtn = styled.button`
   margin: 0 8px 0 0;
 `;
 
-const Filters = styled.div`
-  /* display: flex;
-  justify-content: center;
-  button {
-    margin: 6px;
-  } */
-`;
-
 export {
   Wrapper,
   Input,
@@ -76,6 +68,5 @@ export {
   TaskItem,
   Form,
   RemoveBtn,
-  DoneBtn,
-  Filters
+  DoneBtn
 };
