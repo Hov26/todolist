@@ -1,25 +1,15 @@
 import Filters from "./Filters";
 import { connect } from "react-redux";
 import {
-  showAllTasksAC,
-  showActiveTasksAC,
-  showCompletedTasksAC
+  showAllTasks,
+  showActiveTasks,
+  showCompletedTasks
 } from "../../ToDo/actions";
 
-let mapDispatchToProps = dispatch => {
-  return {
-    showCompletedTasks: () => {
-      dispatch(showCompletedTasksAC());
-    },
-    showActiveTasks: () => {
-      dispatch(showActiveTasksAC());
-    },
-    showAllTasks: () => {
-      dispatch(showAllTasksAC());
-    }
-  };
-};
-
-const FiltersContainer = connect(null, mapDispatchToProps)(Filters);
+const FiltersContainer = connect(null, {
+  showCompletedTasks,
+  showActiveTasks,
+  showAllTasks
+})(Filters);
 
 export default FiltersContainer;

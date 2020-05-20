@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { removeTaskAC, taskDoneAC } from "../../ToDo/actions";
+import { removeTask, switchTaskState } from "../../ToDo/actions";
 import { getTasksList } from "../../ToDo/selector";
 import TasksList from "./TasksList";
 
@@ -10,20 +10,9 @@ let mapStateToProps = state => {
   };
 };
 
-let mapDispatchToProps = dispatch => {
-  return {
-    removeTask: idx => {
-      dispatch(removeTaskAC(idx));
-    },
-    updateTaskState: idx => {
-      dispatch(taskDoneAC(idx));
-    }
-  };
-};
-
-const TasksListContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TasksList);
+const TasksListContainer = connect(mapStateToProps, {
+  removeTask,
+  switchTaskState
+})(TasksList);
 
 export default TasksListContainer;

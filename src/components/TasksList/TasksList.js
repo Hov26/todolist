@@ -7,7 +7,7 @@ const TasksList = props => {
   };
 
   const onUpdateTaskState = idx => {
-    props.updateTaskState(idx);
+    props.switchTaskState(idx);
   };
 
   return (

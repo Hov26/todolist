@@ -1,31 +1,31 @@
-export const addTaskAC = text => ({
+export const addTask = text => ({
   type: "ADD_TASK",
   newTask: text
 });
 
-export const updateValueAC = text => ({
+export const updateValue = text => ({
   type: "UPDATE_INPUT_VALUE",
   newTaskMessage: text
 });
 
-export const removeTaskAC = idx => ({
+export const removeTask = idx => ({
   type: "REMOVE_TASK",
   idx
 });
 
-export const taskDoneAC = idx => ({
+export const switchTaskState = idx => ({
   type: "SWITCH_TASK_STATE",
   idx
 });
 
-export const showCompletedTasksAC = () => ({
-  type: "SHOW_COMPLETED_TASKS"
+export const showAllTasks = () => ({
+  type: "SHOW_ALL_TASKS"
 });
 
-export const showActiveTasksAC = () => ({
+export const showActiveTasks = () => ({
   type: "SHOW_ACTIVE_TASKS"
 });
 
-export const showAllTasksAC = () => ({
-  type: "SHOW_ALL_TASKS"
+export const showCompletedTasks = () => ({
+  type: "SHOW_COMPLETED_TASKS"
 });
