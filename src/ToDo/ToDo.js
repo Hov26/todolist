@@ -3,34 +3,44 @@ import * as S from "./Todo.styled.js";
 import FiltersContainer from "./../components/Filters/FiltersContainer";
 import TasksListContainer from "./../components/TasksList/TasksListContainer";
 
-const ToDo = props => {
-  const onAddTask = e => {
-    const value = e.target.value;
+class ToDo extends React.Component {
+  state = {
+    isOpen: false,
+    currentValue: ""
+  };
+
+  onAddTask = e => {
     if (e.keyCode === 13) {
-      props.addTask(value);
+      this.props.addTask(e.target.value);
+      this.setState({
+        currentValue: ""
+      });
     }
   };
 
-  const onUpdateValue = e => {
-    const value = e.target.value;
-    props.updateValue(value);
+  onUpdateValue = e => {
+    this.setState({
+      currentValue: e.target.value
+    });
   };
 
-  return (
-    <S.Wrapper className="Wrapper">
-      <h1>Todos</h1>
-      <S.Form className="Form">
-        <S.Input
-          type="text"
-          onChange={e => onUpdateValue(e)}
-          onKeyDown={e => onAddTask(e)}
-          value={props.tasksData.currentValue}
-        />
-      </S.Form>
-      <FiltersContainer />
-      <TasksListContainer />
-    </S.Wrapper>
-  );
-};
+  render() {
+    return (
+      <S.Wrapper className="Wrapper">
+        <h1>Todos</h1>
+        <S.Form className="Form">
+          <S.Input
+            type="text"
+            onChange={e => this.onUpdateValue(e)}
+            onKeyDown={e => this.onAddTask(e)}
+            value={this.state.currentValue}
+          />
+        </S.Form>
+        <FiltersContainer />
+        <TasksListContainer />
+      </S.Wrapper>
+    );
+  }
+}
 
 export default ToDo;

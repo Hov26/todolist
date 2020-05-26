@@ -2,14 +2,6 @@ import React from "react";
 import * as S from "./styled";
 
 const TasksList = ({ list, switchTaskState, removeTask }) => {
-  // const onRemoveTask = idx => {
-  //   props.removeTask(idx);
-  // };
-
-  // const onUpdateTaskState = idx => {
-  //   props.switchTaskState(idx);
-  // };
-
   return (
     <S.TasksWrapper className="TasksWrapper">
       {list.map((item, idx) => {
