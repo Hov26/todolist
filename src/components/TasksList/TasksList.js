@@ -1,33 +1,30 @@
 import React from "react";
 import * as S from "./styled";
 
-const TasksList = props => {
-  const onRemoveTask = idx => {
-    props.removeTask(idx);
-  };
+const TasksList = ({ list, switchTaskState, removeTask }) => {
+  // const onRemoveTask = idx => {
+  //   props.removeTask(idx);
+  // };
 
-  const onUpdateTaskState = idx => {
-    props.switchTaskState(idx);
-  };
+  // const onUpdateTaskState = idx => {
+  //   props.switchTaskState(idx);
+  // };
 
   return (
     <S.TasksWrapper className="TasksWrapper">
-      {props.list.map((item, idx) => {
-        const isTaskDone = props.list[idx].isDone;
+      {list.map((item, idx) => {
+        const isTaskDone = list[idx].isDone;
         return (
           <S.ItemWrapper className="ItemWrapper" key={idx}>
             <S.TaskItem
               isDone={isTaskDone}
               className="TaskItem"
-              onClick={() => onUpdateTaskState(idx)}
+              onClick={() => switchTaskState(idx)}
             >
               <S.DoneBtn isDone={isTaskDone} />
               {item.task}
             </S.TaskItem>
-            <S.RemoveBtn
-              className="RemoveBtn"
-              onClick={() => onRemoveTask(idx)}
-            >
+            <S.RemoveBtn className="RemoveBtn" onClick={() => removeTask(idx)}>
               &times;
             </S.RemoveBtn>{" "}
           </S.ItemWrapper>
