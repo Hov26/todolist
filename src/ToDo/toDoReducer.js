@@ -37,22 +37,19 @@ const toDoReducer = (state = initialState, action) => {
       }
 
       case "SHOW_COMPLETED_TASKS": {
-        const newState = { ...state };
-        newState.isCompletedClicked = true;
-        newState.isActiveClicked = false;
-        return newState;
+        draft.isCompletedClicked = true;
+        draft.isActiveClicked = false;
+        return;
       }
       case "SHOW_ACTIVE_TASKS": {
-        const newState = { ...state };
-        newState.isActiveClicked = true;
-        newState.isCompletedClicked = false;
-        return newState;
+        draft.isActiveClicked = true;
+        draft.isCompletedClicked = false;
+        return;
       }
       case "SHOW_ALL_TASKS": {
-        const newState = { ...state };
-        newState.isActiveClicked = false;
-        newState.isCompletedClicked = false;
-        return newState;
+        draft.isActiveClicked = false;
+        draft.isCompletedClicked = false;
+        return;
       }
       default:
         return state;
