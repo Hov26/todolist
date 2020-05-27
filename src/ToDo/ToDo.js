@@ -5,7 +5,6 @@ import TasksListContainer from "./../components/TasksList/TasksListContainer";
 
 class ToDo extends React.Component {
   state = {
-    isOpen: false,
     currentValue: ""
   };
 
