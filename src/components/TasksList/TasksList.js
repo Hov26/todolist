@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useMemo } from "react";
 import * as S from "./styled";
 
-const TasksList = ({ list, switchTaskState, removeTask }) => {
+const TasksList = ({ list, filterOption, switchTaskState, removeTask }) => {
+  const filteredList = useMemo(() => {
+    if (filterOption === "completed") {
+      return list.filter(task => task.isDone);
+    }
+    if (filterOption === "active") {
+      return list.filter(task => !task.isDone);
+    }
+    return list;
+  }, [list, filterOption]);
+
   return (
     <S.TasksWrapper className="TasksWrapper">
-      {list.map((item, idx) => {
-        const isTaskDone = list[idx].isDone;
+      {filteredList.map(({ task, isDone }, idx) => {
         return (
           <S.ItemWrapper className="ItemWrapper" key={idx}>
             <S.TaskItem
-              isDone={isTaskDone}
+              isDone={isDone}
               className="TaskItem"
               onClick={() => switchTaskState(idx)}
             >
-              <S.DoneBtn isDone={isTaskDone} />
-              {item.task}
+              <S.DoneBtn isDone={isDone} />
+              {task}
             </S.TaskItem>
             <S.RemoveBtn className="RemoveBtn" onClick={() => removeTask(idx)}>
               &times;

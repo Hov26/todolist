@@ -1,10 +1,14 @@
 import { createStore, combineReducers } from "redux";
 import toDoReducer from "../ToDo/toDoReducer";
 
-let reducers = combineReducers({
+const __REDUX_DEVTOOLS_EXTENSION__ = window
+  ? window.__REDUX_DEVTOOLS_EXTENSION__
+  : null;
+
+const reducers = combineReducers({
   todoState: toDoReducer
 });
 
-let store = createStore(reducers);
+const store = createStore(reducers, {}, __REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;

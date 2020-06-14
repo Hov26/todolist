@@ -49,6 +49,7 @@ const TaskItem = styled.div`
   align-items: center;
   text-decoration: ${({ isDone }) => (isDone ? "line-through" : "none")};
   color: ${({ isDone }) => (isDone ? "#d8d8d8" : "black")};
+  cursor: pointer;
 `;
 
 const RemoveBtn = styled.button`

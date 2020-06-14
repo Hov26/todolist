@@ -18,14 +18,7 @@ export const switchTaskState = idx => ({
   idx
 });
 
-export const showAllTasks = () => ({
-  type: "SHOW_ALL_TASKS"
-});
-
-export const showActiveTasks = () => ({
-  type: "SHOW_ACTIVE_TASKS"
-});
-
-export const showCompletedTasks = () => ({
-  type: "SHOW_COMPLETED_TASKS"
+export const setFilterOption = filterType => ({
+  type: "SET_FILTER_OPTION",
+  value: filterType
 });

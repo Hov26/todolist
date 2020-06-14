@@ -1,15 +1,7 @@
 import Filters from "./Filters";
 import { connect } from "react-redux";
-import {
-  showAllTasks,
-  showActiveTasks,
-  showCompletedTasks
-} from "../../ToDo/actions";
+import { setFilterOption } from "../../ToDo/actions";
 
-const FiltersContainer = connect(null, {
-  showCompletedTasks,
-  showActiveTasks,
-  showAllTasks
-})(Filters);
+const FiltersContainer = connect(null, { setFilterOption })(Filters);
 
 export default FiltersContainer;
